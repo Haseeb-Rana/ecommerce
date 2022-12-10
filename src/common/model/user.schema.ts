@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { USER_TYPE } from "src/utils/constants";
+import { USER_TYPE } from "src/common/utils/constants";
 
 export type UserDocument = User & Document;
 
