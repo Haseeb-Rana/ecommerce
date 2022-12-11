@@ -13,14 +13,12 @@ export class BuyerController {
 
     constructor(private userService: UserService) { }
 
-    @UseGuards(JwtAuthGuard)
-    // @UseGuards(RolesGuard(Role.Admin))
     @Roles(USER_ROLE.BUYER)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @ApiOperation({ summary: 'Get a list of all sellers' })
     @Get('/list-of-sellers')
     async listSellers(@Request() req, @Res() response) {
         try {
-            // return req.user
           const sellers = await this.userService.find({ role: USER_ROLE.SELLER });
           return response.status(HttpStatus.OK).json(sellers);
         } catch(error) {

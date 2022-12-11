@@ -16,7 +16,7 @@ import { SellerModule } from './seller/seller.module';
     AuthModule,
     SellerModule,
     BuyerModule,
-    SharedModule
+    SharedModule,
   ],
   controllers: [AppController],
   providers: [AppService],
