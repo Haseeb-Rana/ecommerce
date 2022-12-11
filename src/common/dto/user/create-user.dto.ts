@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsEnum, IsNotEmpty, IsString } from "class-validator";
-import { USER_TYPE } from "src/common/utils/constants";
+import { USER_ROLE } from "src/common/utils/constants";
 export class CreateUserDto {
     @ApiProperty()
     @IsString()
@@ -12,8 +12,8 @@ export class CreateUserDto {
     @IsNotEmpty()
     readonly password: string;
 
-    @ApiProperty({ enum: [USER_TYPE.BUYER, USER_TYPE.SELLER]})
+    @ApiProperty({ enum: [USER_ROLE.BUYER, USER_ROLE.SELLER]})
     @IsNotEmpty()
-    @IsEnum(USER_TYPE)
-    readonly userType: USER_TYPE;
+    @IsEnum(USER_ROLE)
+    readonly userType: USER_ROLE;
 }

@@ -25,4 +25,11 @@ export class UserService {
     async findOne(condition : any) {
         return this.userModel.findOne(condition).lean();
     }
+    async find(condition: any) {
+        return this.userModel.find(condition).lean();
+    }
+
+    async findByUsername(username : any) {
+        return this.userModel.findOne({ username }).select('+password').lean();
+    }
 }

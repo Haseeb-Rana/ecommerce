@@ -1,12 +1,13 @@
 import { Body, Controller, HttpException, HttpStatus, Post, Request, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiBody, ApiOperation } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from 'src/common/dto/user/create-user.dto';
 import { LoginUserDto } from 'src/common/dto/user/login-user.dto';
-import { UserService } from 'src/user/user.service';
+import { UserService } from 'src/common/service/user.service';
 import { AuthService } from './auth.service';
 
 @Controller('/api/auth')
+@ApiTags('Auth')
 export class AuthController {
     constructor(private authService: AuthService, private userService: UserService) { }
 
