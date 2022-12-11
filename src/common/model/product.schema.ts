@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import * as mongoose from 'mongoose';
 import { Catalog } from "./catalog.schema";
+import { Types } from "mongoose";
 
 export type ProductDocument = Product & Document;
 
@@ -14,7 +14,7 @@ export class Product {
     @Prop({required:true })
     price: number;
 
-    @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'Catalog' })
+    @Prop({type: Types.ObjectId, ref: 'Catalog' })
     catalog: Catalog;
 }
 
