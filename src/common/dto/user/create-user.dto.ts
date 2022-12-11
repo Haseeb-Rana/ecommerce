@@ -15,5 +15,5 @@ export class CreateUserDto {
     @ApiProperty({ enum: [USER_ROLE.BUYER, USER_ROLE.SELLER]})
     @IsNotEmpty()
     @IsEnum(USER_ROLE)
-    readonly userType: USER_ROLE;
+    readonly role: USER_ROLE;
 }

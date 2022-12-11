@@ -33,6 +33,7 @@ export class AuthController {
       const newUser = await this.userService.signup(user);
       return response.status(HttpStatus.CREATED).json({ message: 'User has been created successfully', user: newUser });
     } catch (err) {
+        console.error(' Auth register err', err.message)
         return response.status(HttpStatus.BAD_REQUEST).json({ statusCode: 400, message: 'Error: User not created!', error: 'Bad Request' });
     }
     }
