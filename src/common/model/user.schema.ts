@@ -7,13 +7,13 @@ export type UserDocument = User & Document;
 @Schema({ timestamps: true })
 export class User {
 
-    @Prop({required:true, unique:true, lowercase:true })
+    @Prop({ type: String, required:true, unique:true })
     username: string;
 
-    @Prop({required:true, select: false })
+    @Prop({ type: String, required:true, select: false })
     password: string
 
-    @Prop({type: String, required:true ,enum: USER_ROLE })
+    @Prop({ type: String, required:true, enum: USER_ROLE })
     role: USER_ROLE
 }
 

@@ -8,13 +8,13 @@ export type ProductDocument = Product & Document;
 @Schema({ timestamps: true })
 export class Product {
 
-    @Prop({required:true, lowercase:true })
+    @Prop({ required:true })
     name: string;
 
-    @Prop({required:true })
+    @Prop({ required:true })
     price: number;
 
-    @Prop({type: Types.ObjectId, ref: 'Catalog' })
+    @Prop({ type: Types.ObjectId, ref: 'Catalog' })
     catalog: Catalog;
 }
 

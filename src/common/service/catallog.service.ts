@@ -15,6 +15,10 @@ export class CatalogService {
         return this.catalogModel.findOne(query).lean();
     }
 
+    async create(param: any) {
+        return new this.catalogModel(param).save();
+    }
+
     async getCataogId(query: any) {
         return this.catalogModel.distinct('_id', query);
     }

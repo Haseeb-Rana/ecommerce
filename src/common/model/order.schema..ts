@@ -8,7 +8,7 @@ export type OrderDocument = Order & Document;
 @Schema({ timestamps: true })
 export class Order {
 
-    @Prop({ required:true, lowercase:true })
+    @Prop({ required:true, type: String,  lowercase:true })
     product: string;
 
     @Prop({type: Types.ObjectId, ref: 'User' })
