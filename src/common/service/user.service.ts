@@ -19,10 +19,17 @@ export class UserService {
         return await new this.userModel( {
             username: user.username,
             password: hash,
-            userType: user.userType }).save();
+            role: user.role }).save();
     }
 
     async findOne(condition : any) {
         return this.userModel.findOne(condition).lean();
+    }
+    async find(condition: any) {
+        return this.userModel.find(condition).lean();
+    }
+
+    async findByUsername(username : any) {
+        return this.userModel.findOne({ username }).select('+password').lean();
     }
 }
