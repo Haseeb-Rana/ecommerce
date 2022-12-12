@@ -1,30 +1,42 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+![](http://imgur.com/t3teAxi.png)
+###  A simple RESTful API for e-Commerce
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Features
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<b>Auth Features</b>
+
+| Feature  |  Coded?       | Description  |
+|----------|:-------------:|:-------------|
+| Login user | &#10004; | Let a previously registered user log in (e.g. retrieve authentication token) |
+| Signup user | &#10004; | Register a user (accept username, password, type of user - buyer/seller) |
+
+<b>Buyer Features</b>
+
+| Feature  |  Coded?       | Description  |
+|----------|:-------------:|:-------------|
+| List sellers | &#10004; | Get a list of all sellers |
+| Get seller catalog | &#10004; | Get the catalog of a seller by seller_id |
+| Create order | &#10004; | Send a list of items to create an order for seller with id = seller_id |
+
+<b>Seller Features</b>
+
+| Feature  |  Coded?       | Description  |
+|----------|:-------------:|:-------------|
+| Create a catalog | &#10004; | Send a list of items to create a catalog for a seller |
+| List orders | &#10004; | Retrieve the list of orders received by a seller |
+
+# eCommerce
+
+**eCommerce** it's an open source (test scenario) software made to create a easy and simple "Shop" API, where you have Module  services, one the **Seller API** that stores and handles everything Related to Stock and Products. And the **Buyer API** where you can create orders (cart's) and checkout items.
+
+The purpose of this repository it's for education and test. But the code it's being coded in a proper way.
+
+## Documentation
+
+**eCommerce** has a full API documentation made with [Swagger](https://swagger.io).
+
 
 ## Installation
 
@@ -40,34 +52,26 @@ $ npm run start
 
 # watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Test
+##  Documentation
 
 ```bash
-# unit tests
-$ npm run test
+# Generate documentation
+$ npm run doc:serve
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Support
+**[View documentation](http://127.0.0.1:8080).**
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+### Notes
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**Note.:** Install mongodb.
 
-## License
+**Note.:** Set following environment variables
+* **MONGO_URI:** SET HERE
 
-Nest is [MIT licensed](LICENSE).
+
+
+**Note.:** By default `api` runs on port 3000.
