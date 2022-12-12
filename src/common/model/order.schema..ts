@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import mongoose from "mongoose";
 import { User } from "./user.schema";
-import { Types } from "mongoose";
 
 export type OrderDocument = Order & Document;
 
@@ -11,10 +11,10 @@ export class Order {
     @Prop({ required:true, type: String,  lowercase:true })
     product: string;
 
-    @Prop({type: Types.ObjectId, ref: 'User' })
+    @Prop({type: mongoose.Schema.Types.ObjectId, ref: User.name })
     seller: User
 
-    @Prop({type: Types.ObjectId, ref: 'User' })
+    @Prop({type: mongoose.Schema.Types.ObjectId, ref: User.name })
     buyer: User
 }
 

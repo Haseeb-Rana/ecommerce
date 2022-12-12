@@ -1,5 +1,6 @@
-import { Body, Controller, Get, HttpStatus, Post, Request, Response, UseGuards, HttpException } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Get, HttpException, HttpStatus, Post, Request, Response, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import mongoose from 'mongoose';
 import { Roles } from 'src/common/decorator/roles.decorator';
 import { CreateCatalogDto } from 'src/common/dto/catalog/create-catalog';
 import { JwtAuthGuard } from 'src/common/guard/jwt-auth.guard';
@@ -7,10 +8,11 @@ import { RolesGuard } from 'src/common/guard/roles.guard';
 import { CatalogService } from 'src/common/service/catallog.service';
 import { OrderService } from 'src/common/service/order.service';
 import { ProductService } from 'src/common/service/product.service';
-import { USER_ROLE } from 'src/common/utils/constants';
+import { ACCESS_TOKEN, USER_ROLE } from 'src/common/utils/constants';
 
 @Controller('/api/seller')
 @ApiTags('Seller')
+@ApiBearerAuth(ACCESS_TOKEN)
 export class SellerController {
 
     
@@ -28,14 +30,13 @@ export class SellerController {
             if(catalogInfo) {
               throw new HttpException('Catalog already exists', HttpStatus.BAD_REQUEST);
             } else {
-                
-            catalogInfo = await this.catalogService.create({ name: catalog.name, description: catalog.description, seller: req.user._id })
-            products = products.map((product: any ) => {
-                return { ...product, seller: req.user._id }
-            });
-            const productList = await this.productService.addProduct(products);
-            catalogInfo['products'] = productList;
-            return response.status(HttpStatus.CREATED).json(catalogInfo);
+                catalogInfo = await this.catalogService.create({ name: catalog.name, description: catalog.description, seller: new mongoose.Types.ObjectId(req.user._id)  })
+                products = products.map((product: any ) => {
+                    return { ...product, catalog: catalogInfo._id }
+                });
+                const productList = await this.productService.addProduct(products);
+                catalogInfo['products'] = productList;
+                return response.status(HttpStatus.CREATED).json(catalogInfo);
             }
 
         } catch(error) {

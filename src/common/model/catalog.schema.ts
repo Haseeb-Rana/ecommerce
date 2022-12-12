@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { User } from "./user.schema";
-import { Types } from "mongoose";
+import mongoose from "mongoose";
 import { CATALOG_STATUS } from "../utils/constants";
 
 export type CatalogDocument = Catalog & Document;
@@ -18,7 +18,7 @@ export class Catalog {
     @Prop({ index: true, type: String, default: CATALOG_STATUS.ACTIVE, enum: CATALOG_STATUS })
     status: CATALOG_STATUS;
 
-    @Prop({ type: Types.ObjectId, ref: 'User', index: true, unique: true  })
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name, index: true, unique: true  })
     seller: User
 }
 

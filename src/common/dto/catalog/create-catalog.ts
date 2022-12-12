@@ -15,7 +15,7 @@ export class CreateCatalogDto {
     @IsNotEmpty()
     readonly description: string;
 
-    @ApiProperty()
+    @ApiProperty({ isArray: true,  type: CreateProductDto })
     @IsDefined()
     @IsArray()
     @IsNotEmpty()
