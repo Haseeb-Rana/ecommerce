@@ -12,7 +12,8 @@ async function bootstrap() {
     .setDescription('E-commerce API description')
     .setVersion('1.0')
     .addTag('E-commerce')
-    .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'access-token')
+    .addBearerAuth()
+    // .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'access-token')
 
 
     // .addBearerAuth(
