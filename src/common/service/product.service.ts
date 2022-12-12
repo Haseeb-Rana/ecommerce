@@ -19,4 +19,7 @@ export class ProductService {
             return new this.productModel(products).save()
         }
     }
+    async findAll(query: Object = {}) {
+        return this.productModel.find(query);
+    }
 }
