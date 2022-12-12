@@ -22,4 +22,14 @@ export class ProductService {
     async findAll(query: Object = {}) {
         return this.productModel.find(query);
     }
+
+    async findOne(query: Object) {
+        return this.productModel.findOne(query);
+
+    }
+
+    async count(query: Object) {
+        return this.productModel.countDocuments(query);
+
+    }
 }
